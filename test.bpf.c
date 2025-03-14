@@ -9,6 +9,13 @@ struct event {
     u64 inverse_magic;
 };
 
+struct {
+    __uint(type, BPF_MAP_TYPE_HASH);
+    __type(key, u32);
+    __type(value, u32);
+    __uint(max_entries, 42);
+} map_men SEC(".maps");
+
 // see: https://docs.ebpf.io/linux/map-type/BPF_MAP_TYPE_RINGBUF/
 struct {
     __uint(type, BPF_MAP_TYPE_RINGBUF);
