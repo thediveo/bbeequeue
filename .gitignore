@@ -1,0 +1,4 @@
+*.o
+*bpfeb_test.go
+*bpfel_test.go
+coverage.*
