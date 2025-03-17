@@ -17,8 +17,9 @@ jobs:
       matrix:
         go: [ 'stable', 'oldstable' ]
         kernel: [ 'stable', '6.1' ]
-      env:
-        KERNEL: ghcr.io/cilium/ci-kernels:${{matrix.kernel}} 
+    env:
+      KERNEL: 'ghcr.io/cilium/ci-kernels:${{matrix.kernel}}'
+      CGO_ENABLED: '0'
     steps:
 
       - name: Set up Go ${{matrix.go}}
@@ -32,6 +33,9 @@ jobs:
           sudo apt-get update && sudo apt-get install -y --no-install-recommends qemu-system-x86
           sudo chmod 0666 /dev/kvm
 
+      - name: Install clang/llvm
+        run: sudo apt-get install -y clang llvm
+
       - name: Install vimto
         run: go install lmb.io/vimto@latest
 
@@ -41,4 +45,6 @@ jobs:
       - name: Test
         run: |
           go env -w GOTOOLCHAIN=local
-          vimto -kernel ${KERNEL} -sudo -- go test -v -race .
+          go install github.com/cilium/ebpf/cmd/bpf2go@latest
+          go generate .
+          vimto -kernel ${KERNEL} -sudo -- go test -v .
