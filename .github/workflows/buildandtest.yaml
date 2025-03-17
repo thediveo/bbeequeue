@@ -41,4 +41,5 @@ jobs:
       - name: Test
         run: |
           go env -w GOTOOLCHAIN=local
+          go generate .
           vimto -kernel ${KERNEL} -sudo -- go test -v -race .
