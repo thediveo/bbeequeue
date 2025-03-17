@@ -18,7 +18,8 @@ jobs:
         go: [ 'stable', 'oldstable' ]
         kernel: [ 'stable', '6.1' ]
     env:
-      KERNEL: ghcr.io/cilium/ci-kernels:${{matrix.kernel}} 
+      KERNEL: 'ghcr.io/cilium/ci-kernels:${{matrix.kernel}}'
+      CGO_ENABLED: '0'
     steps:
 
       - name: Set up Go ${{matrix.go}}
