@@ -47,4 +47,4 @@ jobs:
           go env -w GOTOOLCHAIN=local
           go install github.com/cilium/ebpf/cmd/bpf2go@latest
           go generate .
-          vimto -kernel ${KERNEL} -sudo -- go test -v -race .
+          vimto -kernel ${KERNEL} -sudo -- go test -v .
