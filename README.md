@@ -1,7 +1,8 @@
 # `bbeequeue`
 
-[![PkgGoDev](https://img.shields.io/badge/-reference-blue?logo=go&logoColor=white&labelColor=505050)](https://pkg.go.dev/github.com/thediveo/cpus)
-[![GitHub](https://img.shields.io/github/license/thediveo/cpus)](https://img.shields.io/github/license/thediveo/cpus)
+[![PkgGoDev](https://img.shields.io/badge/-reference-blue?logo=go&logoColor=white&labelColor=505050)](https://pkg.go.dev/github.com/thediveo/bbeequeue)
+[![GitHub](https://img.shields.io/github/license/thediveo/bbeequeue)](https://img.shields.io/github/license/thediveo/bbeequeue)
+![build and test](https://github.com/thediveo/bbeequeue/actions/workflows/buildandtest.yaml/badge.svg?branch=master)
 ![Coverage](https://img.shields.io/badge/Coverage-91.9%25-brightgreen)
 ![goroutines](https://img.shields.io/badge/go%20routines-not%20leaking-success)
 
