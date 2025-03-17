@@ -1,0 +1,44 @@
+name: build and test
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+
+  buildandtest:
+    name: Build and Test on Go ${{matrix.go}}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: [ 'stable', 'oldstable' ]
+        kernel: [ 'stable', '6.1' ]
+      env:
+        KERNEL: ghcr.io/cilium/ci-kernels:${{matrix.kernel}} 
+    steps:
+
+      - name: Set up Go ${{matrix.go}}
+        uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # pin@v5
+        with:
+          go-version: ${{matrix.go}}
+        id: go
+
+      - name: Install Qemu
+        run: |
+          sudo apt-get update && sudo apt-get install -y --no-install-recommends qemu-system-x86
+          sudo chmod 0666 /dev/kvm
+
+      - name: Install vimto
+        run: go install lmb.io/vimto@latest
+
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # pin@v4
+
+      - name: Test
+        run: |
+          go env -w GOTOOLCHAIN=local
+          vimto -kernel ${KERNEL} -sudo -- go test -v -race .
