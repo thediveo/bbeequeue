@@ -20,6 +20,7 @@ import (
 	"time"
 
 	"github.com/cilium/ebpf"
+
 	"github.com/thediveo/bbeequeue"
 
 	. "github.com/onsi/ginkgo/v2"

@@ -39,8 +39,8 @@ that is, major versions _N_ and _N_-1 (where _N_ is the current major version).
 
 ## Copyright and License
 
-`bbeequeue` is Copyright 2025 Harald Albrecht, and licensed under the Apache
-License, Version 2.0.
+`bbeequeue` is Copyright 2025, 2026 Harald Albrecht, and licensed under the
+Apache License, Version 2.0.
 
 The header files in `_headers/` are licensed under a BSD-2-Clause; they
 originate from
