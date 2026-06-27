@@ -1,7 +1,7 @@
 {
     "name": "bbeequeue",
     "portsAttributes": {
-        "16085": {
+        "6060": {
             "label": "bbeequeue package documentation",
             "onAutoForward": "notify",
             "protocol": "http"
@@ -23,7 +23,7 @@
             "html": true
         },
         "ghcr.io/thediveo/devcontainer-features/local-pkgsite:1": {
-            "port": "16085"
+            "port": "6060"
         },
         "ghcr.io/thediveo/devcontainer-features/go-ebpf:1": {},
         "ghcr.io/thediveo/devcontainer-features/bpftool:0": {}
